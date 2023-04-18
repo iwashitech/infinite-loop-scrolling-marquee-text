@@ -48,11 +48,13 @@
       }, '');
     };
 
+    const config = { xPercent: -50, ease: 'none', duration: 30, repeat: -1 };
+
     document.querySelector('.loop.-normal .loop__txt').replaceWith(...htmlToNode(createHtmlTxt('.loop.-normal .loop__txt')));
     document.querySelector('.loop.-reverse .loop__txt').replaceWith(...htmlToNode(createHtmlTxt('.loop.-reverse .loop__txt')));
 
-    gsap.to('.loop.-normal', { xPercent: -50, ease: 'none', duration: 30, repeat: -1 }).totalProgress(0.5);
-    gsap.to('.loop.-reverse', { xPercent: -50, ease: 'none', duration: 30, repeat: -1, reversed: true }).totalProgress(0.5);
+    gsap.to('.loop.-normal', { ...config }).totalProgress(0.5);
+    gsap.to('.loop.-reverse', { ...config, reversed: true }).totalProgress(0.5);
   </script>
 </body>
 </html>

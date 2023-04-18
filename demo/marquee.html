@@ -21,7 +21,7 @@
     .marquee__part {
       flex-shrink: 0;
       padding: 0 4px;
-      font-size: 10vw;
+      font-size: 14vw;
       font-smooth: always;
     }
   </style>
@@ -39,15 +39,17 @@
   </section>
 
   <script>
+    const config = {xPercent: -100, repeat: -1, duration: 30, ease: "linear"};
+    
     [...Array(3).keys()].forEach((_) => {
       document.querySelector('.marquee__inner.-normal').appendChild(document.querySelector('.-normal .marquee__part').cloneNode(true));
     });
-    gsap.to(".-normal .marquee__part", {xPercent: -100, repeat: -1, duration: 10, ease: "linear"}).totalProgress(0.5);
+    gsap.to(".-normal .marquee__part", {...config}).totalProgress(0.5);
 
     [...Array(3).keys()].forEach((_) => {
       document.querySelector('.marquee__inner.-reverse').appendChild(document.querySelector('.-reverse .marquee__part').cloneNode(true));
     });
-    gsap.to(".-reverse .marquee__part", {xPercent: -100, repeat: -1, duration: 10, ease: "linear", reversed: true}).totalProgress(0.5);
+    gsap.to(".-reverse .marquee__part", {...config, reversed: true}).totalProgress(0.5);
   </script>
 </body>
 </html>
